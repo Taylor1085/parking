@@ -6,7 +6,7 @@ class CreatePayments < ActiveRecord::Migration[6.0]
       t.integer :fee
       t.references :driver, null: false, foreign_key: true
 
-      t.timesta mps
+      t.timestamps
     end
   end
 end
