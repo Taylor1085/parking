@@ -1,2 +1,42 @@
 <h1>Tickets#index</h1>
-<p>Find me in app/views/tickets/index.html.erb</p>
+<nav>
+  <div class="navbar">
+    <h1>Parking Tix</h1>
+    <ul>
+      <li>
+        <a href=''>Tickets</a>
+      </li>
+      <li>
+        <a href=''>Drivers</a>
+      </li>
+    </ul>
+    <form class="form-search" action="/search" method="get">
+    <input type="text" name="q" id="q" class="form-input" placeholder="Search">
+    <select name="category" id="category" class="form-input form-select">
+    <option>Ticket</option>
+    <option>Driver</option>
+    </select>
+    <input type="submit" name="commit" value="Search" class="btn btn-search" data-disable-with="Search">
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Ticket Number</th>
+        <th>Violation</th>
+        <th>Street</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
