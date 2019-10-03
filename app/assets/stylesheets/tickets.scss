@@ -1,3 +1,104 @@
 // Place all the styles related to the tickets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.page-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+
+}
+
+.bg-drk {
+  background-color: black;
+}
+
+.navbar {
+  display: flex;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.navbar-div {
+  display: flex !important;
+  flex-grow: 1;
+}
+
+.navbar-div h1 {
+  font-size: 50px;
+}
+
+.navbar-div ul {
+  list-style: none;
+  margin-left: 6%;
+  margin-top: 4%;
+}
+
+.navbar-div li {
+  display: inline-block;
+  font-size: 40px;
+  list-style: none;
+  margin-right: 29px;
+
+}
+
+.navbar-div li a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-div li a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.form-search {
+  margin-top: 4%;
+  margin-left: 15%;
+}
+
+.input-user {
+  height: 36px !important;
+}
+
+.form-input {
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 40px;
+  width: 176px;
+}
+
+.btn-search {
+  height: 40px;
+  width: 82px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: lightblue;
+}
+
+.container {
+  margin: 17%;
+
+}
+
+.container h1 {
+  font-size: 52px;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+
+table thead th {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.table th, .table td {
+  padding: 1rem;
+}

@@ -1,7 +1,6 @@
-<h1>Tickets#index</h1>
-<nav>
-  <div class="navbar">
-    <h1>Parking Tix</h1>
+<nav class="navbar bg-drk page-top">
+  <div class="navbar-div">
+    <h1>TicketDB</h1>
     <ul>
       <li>
         <a href=''>Tickets</a>
@@ -9,9 +8,12 @@
       <li>
         <a href=''>Drivers</a>
       </li>
+      <li>
+        <a href=''>About</a>
+      </li>
     </ul>
     <form class="form-search" action="/search" method="get">
-    <input type="text" name="q" id="q" class="form-input" placeholder="Search">
+    <input type="text" name="q" id="q" class="form-input input-user" placeholder="Search">
     <select name="category" id="category" class="form-input form-select">
     <option>Ticket</option>
     <option>Driver</option>
@@ -21,7 +23,8 @@
   </div>
 </nav>
 <div class="container">
-  <table>
+  <h1>Tickets</h1>
+  <table class="table">
     <thead>
       <tr>
         <th>Ticket Number</th>
@@ -31,12 +34,14 @@
       </tr>
     </thead>
     <tbody>
+    <% @tickets.each do |ticket| %>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><a href=""><%= ticket.ticketNum %></a></td>
+        <td><%= ticket.violation %></td>
+        <td><%= ticket.street %></td>
+        <td><%= ticket.date %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
