@@ -1,15 +1,15 @@
 <nav class="navbar bg-drk page-top">
   <div class="navbar-div">
-    <h1>TicketDB</h1>
+    <h1><%= link_to 'TicketDB', 'tickets' =%></h1>
     <ul>
       <li>
-        <a href=''>Tickets</a>
+        <%= link_to 'Tickets', 'tickets' =%>
       </li>
       <li>
-        <a href=''>Drivers</a>
+        <%= link_to 'Drivers', 'drivers' =%>
       </li>
       <li>
-        <a href=''>About</a>
+        <%= link_to 'About', 'about' =%>
       </li>
     </ul>
     <form class="form-search" action="/search" method="get">
@@ -35,13 +35,17 @@
       </tr>
     </thead>
     <tbody>
+    <% @drivers.each do |driver| %>
       <tr>
-        <td><a href=""></a></td>
-        <td>Name</td>
-        <td>Violation</td>
-        <td>Street</td>
-        <td>Date</td>
+      <% driver.tickets.each do |ticket| %>
+        <td><%= ticket.ticketNum %></td>
+        <td><%= driver.name %></td>
+        <td><%= ticket.violation %></td>
+        <td><%= ticket.street %></td>
+        <td><%= ticket.date %></td>
+      <% end %>
       </tr>
+     <% end %>
     </tbody>
   </table>
 </div>

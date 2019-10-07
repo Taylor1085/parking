@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  ticket: one
   name: MyString
   phoneNum: 1
-  ticket: one
 
 two:
+  ticket: two
   name: MyString
   phoneNum: 1
-  ticket: two

@@ -10,34 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_233323) do
+ActiveRecord::Schema.define(version: 2019_10_07_013916) do
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
-    t.integer "phoneNum"
-    t.integer "ticket_id", null: false
+    t.string "phoneNum"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ticket_id"], name: "index_drivers_on_ticket_id"
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.integer "fee"
-    t.integer "driver_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["driver_id"], name: "index_payments_on_driver_id"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "ticketNum"
-    t.date "date"
+    t.string "ticketNum"
     t.string "violation"
     t.string "street"
+    t.date "date"
+    t.integer "driver_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["driver_id"], name: "index_tickets_on_driver_id"
   end
 
-  add_foreign_key "drivers", "tickets"
-  add_foreign_key "payments", "drivers"
+  add_foreign_key "tickets", "drivers"
 end

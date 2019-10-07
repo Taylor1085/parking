@@ -1,18 +1,24 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Ticket.destroy_all
+Driver.destroy_all
+require 'net/http'
+require 'json'
+require 'pp'
 
-# Ticket.destroy_all
-# 3.times do
-#   Ticket.create([{
-#                   violation: Faker::Name.name
-#                 }])
-# end
+url = 'https://data.winnipeg.ca/resource/bhrt-29rb.json'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+parsed_response = JSON.parse(response)
 
-# puts "Created #{Ticket.count} tickets"
+parsed_response.each do |num|
+  new_driver = Driver.create(name: Faker::Name.unique.name,
+                             phoneNum: Faker::PhoneNumber.phone_number)
+
+  new_driver.tickets.create(ticketNum: num['ticket_number'],
+                            street: num['street'],
+                            violation: num['violation'],
+                            date: num['issue_date'])
+end
+
+puts "Created #{Driver.count} ... #{Ticket.count} tickets"
