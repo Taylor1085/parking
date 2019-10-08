@@ -9,8 +9,4 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
   end
-
-  def search_results
-    if()
-  end
 end

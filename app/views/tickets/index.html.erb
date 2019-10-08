@@ -12,10 +12,14 @@
         <%= link_to 'About', about_index_path =%>
       </li>
     </ul>
-   <%= form_tag '/some_path/', method: :get do %>
-    <%= text_field_tag :search_keywords %>
-    <%= submit_tag 'Search' %>
-   <% end %>
+    <form class="form-search" action="/search" method="get">
+    <input type="text" name="q" id="q" class="form-input input-user" placeholder="Search">
+    <select name="category" id="category" class="form-input form-select">
+    <option>Ticket</option>
+    <option>Driver</option>
+    </select>
+    <input type="submit" name="commit" value="Search" class="btn btn-search" data-disable-with="Search">
+    </form>
   </div>
 </nav>
 <div class="container">
