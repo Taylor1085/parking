@@ -20,6 +20,10 @@ parsed_response.each do |num|
                             street: num['street'],
                             violation: num['violation'],
                             date: num['issue_date'])
+  new_driver.tickets.create(ticketNum: Faker::Number.number(7, digits: 7),
+                            street: num['street'],
+                            violation: num['violation'],
+                            date: num['issue_date'])
 end
 
 puts "Created #{Driver.count} ... #{Ticket.count} tickets"
