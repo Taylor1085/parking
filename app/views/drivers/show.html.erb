@@ -1,15 +1,15 @@
 <nav class="navbar bg-drk page-top">
   <div class="navbar-div">
-    <h1><%= link_to 'TicketDB', 'tickets' =%></h1>
+    <h1><%= link_to 'TicketDB', 'tickets_path' =%></h1>
     <ul>
       <li>
-        <%= link_to 'Tickets', 'tickets' =%>
+        <%= link_to 'Tickets', tickets_path =%>
       </li>
       <li>
-        <%= link_to 'Drivers', 'drivers' =%>
+        <%= link_to 'Drivers', drivers_path =%>
       </li>
       <li>
-        <%= link_to 'About', 'about' =%>
+        <%= link_to 'About', about_index_path =%>
       </li>
     </ul>
     <form class="form-search" action="/search" method="get">
@@ -23,25 +23,28 @@
   </div>
 </nav>
 <div class="container">
-  <h1>Driver Name</h1>
+  <h1><%= @driver.name %></h1>
+  <h2>Phone Number: <%= @driver.phoneNum %></h2>
+  <h2>Email: <%= @driver.email %></h2>
+  <h2>Age: <%= @driver.age %></h2>
   <table class="table">
     <thead>
       <tr>
         <th>Ticket Number</th>
         <th>Violation</th>
-        <th>Fees
         <th>Street</th>
         <th>Date</th>
       </tr>
     </thead>
     <tbody>
+    <% @driver.tickets.each do |tickets| %>
       <tr>
-        <td><a href=""></a></td>
-        <td>Violation</td>
-        <td>Fees</td>
-        <td>Street</td>
-        <td>Date</td>
+        <td><%= link_to tickets.ticketNum, ticket_path(tickets) %></td>
+        <td><%= tickets.violation %></td>
+        <td><%= tickets.street %></td>
+        <td><%= tickets.date %></td>
       </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

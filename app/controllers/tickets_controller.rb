@@ -2,8 +2,15 @@
 
 class TicketsController < ApplicationController
   def index
-    @tickets = Ticket.all
+    # @tickets = Ticket.all
+    @tickets = Ticket.order(:name).page params[:page]
   end
 
-  def show; end
+  def show
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def search_results
+    if()
+  end
 end

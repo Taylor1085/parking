@@ -3,13 +3,13 @@
     <h1><%= link_to 'TicketDB', 'tickets' =%></h1>
     <ul>
       <li>
-        <%= link_to 'Tickets', 'tickets' =%>
+        <%= link_to 'Tickets', tickets_path =%>
       </li>
       <li>
-        <%= link_to 'Drivers', 'drivers' =%>
+        <%= link_to 'Drivers', drivers_path =%>
       </li>
       <li>
-        <%= link_to 'About', 'about' =%>
+        <%= link_to 'About', about_index_path =%>
       </li>
     </ul>
     <form class="form-search" action="/search" method="get">
@@ -23,17 +23,10 @@
   </div>
 </nav>
 <div class="container">
-  <h1>Ticket #</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Ticket Number</th>
-        <th>Driver Name</th>
-        <th>Phone Number</th>
-        <th>Violation</th>
-        <th>Street</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-  </table>
+  <h1>Ticket #<%= @ticket.ticketNum %></h1>
+  <h2>Name: <%= link_to @ticket.driver.name, driver_path(@ticket.driver) %></h2>
+  <h2>Phone Number: <%= @ticket.driver.phoneNum %></h2>
+  <h2>Violation: <%= @ticket.violation %></h2>
+  <h2>Street: <%= @ticket.street %></h2>
+  <h2>Issue Date: <%= @ticket.date %></h2>
 </div>

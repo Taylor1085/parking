@@ -13,8 +13,9 @@ parsed_response = JSON.parse(response)
 
 parsed_response.each do |num|
   new_driver = Driver.create(name: Faker::Name.unique.name,
-                             phoneNum: Faker::PhoneNumber.phone_number)
-
+                             phoneNum: Faker::PhoneNumber.cell_phone,
+                             email: Faker::Internet.free_email,
+                             age: Faker::Number.between(from: 16, to: 85))
   new_driver.tickets.create(ticketNum: num['ticket_number'],
                             street: num['street'],
                             violation: num['violation'],

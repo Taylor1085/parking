@@ -3,13 +3,13 @@
     <h1><%= link_to 'TicketDB', 'tickets' =%></h1>
     <ul>
       <li>
-        <%= link_to 'Tickets', 'tickets' =%>
+        <%= link_to 'Tickets', tickets_path =%>
       </li>
       <li>
-        <%= link_to 'Drivers', 'drivers' =%>
+        <%= link_to 'Drivers', drivers_path =%>
       </li>
       <li>
-        <%= link_to 'About', 'about' =%>
+        <%= link_to 'About', about_index_path =%>
       </li>
     </ul>
     <form class="form-search" action="/search" method="get">
@@ -24,28 +24,30 @@
 </nav>
 <div class="container">
   <h1>Drivers</h1>
+  <div class="pages">
+    <%= paginate @drivers, window: 2 %>
+  </div>
   <table class="table">
     <thead>
       <tr>
-        <th>Ticket Number</th>
         <th>Driver Name</th>
-        <th>Violation</th>
-        <th>Street</th>
-        <th>Date</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Age</th>
       </tr>
     </thead>
     <tbody>
     <% @drivers.each do |driver| %>
       <tr>
-      <% driver.tickets.each do |ticket| %>
-        <td><%= ticket.ticketNum %></td>
-        <td><%= driver.name %></td>
-        <td><%= ticket.violation %></td>
-        <td><%= ticket.street %></td>
-        <td><%= ticket.date %></td>
-      <% end %>
+        <td><%= link_to driver.name, driver_path(driver) %></td>
+        <td><%= driver.phoneNum %></td>
+        <td><%= driver.email %></td>
+        <td><%= driver.age %></td>
       </tr>
      <% end %>
     </tbody>
   </table>
+  <div class="pages">
+    <%= paginate @drivers, window: 2 %>
+  </div>
 </div>

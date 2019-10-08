@@ -3,27 +3,26 @@
     <h1><%= link_to 'TicketDB', 'tickets' =%></h1>
     <ul>
       <li>
-        <%= link_to 'Tickets', 'tickets' =%>
+        <%= link_to 'Tickets', tickets_path =%>
       </li>
       <li>
-        <%= link_to 'Drivers', 'drivers' =%>
+        <%= link_to 'Drivers', drivers_path =%>
       </li>
       <li>
-        <%= link_to 'About', 'about' =%>
+        <%= link_to 'About', about_index_path =%>
       </li>
     </ul>
-    <form class="form-search" action="/search" method="get">
-    <input type="text" name="q" id="q" class="form-input input-user" placeholder="Search">
-    <select name="category" id="category" class="form-input form-select">
-    <option>Ticket</option>
-    <option>Driver</option>
-    </select>
-    <input type="submit" name="commit" value="Search" class="btn btn-search" data-disable-with="Search">
-    </form>
+   <%= form_tag '/some_path/', method: :get do %>
+    <%= text_field_tag :search_keywords %>
+    <%= submit_tag 'Search' %>
+   <% end %>
   </div>
 </nav>
 <div class="container">
   <h1>Tickets</h1>
+  <div class="pages">
+    <%= paginate @tickets, window: 2 %>
+  </div>
   <table class="table">
     <thead>
       <tr>
@@ -36,7 +35,7 @@
     <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><a href=""><%= ticket.ticketNum %></a></td>
+        <td><%= link_to ticket.ticketNum, ticket_path(ticket) %></td>
         <td><%= ticket.violation %></td>
         <td><%= ticket.street %></td>
         <td><%= ticket.date %></td>
@@ -44,4 +43,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="pages">
+    <%= paginate @tickets, window: 2 %>
+  </div>
 </div>

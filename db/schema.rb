@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_013916) do
+ActiveRecord::Schema.define(version: 2019_10_07_164119) do
 
   create_table "drivers", force: :cascade do |t|
     t.string "name"
     t.string "phoneNum"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.integer "age"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string "ticketNum"
+    t.integer "ticketNum"
     t.string "violation"
     t.string "street"
     t.date "date"
